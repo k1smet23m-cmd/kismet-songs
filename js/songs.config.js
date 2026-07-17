@@ -9,7 +9,8 @@ window.BLINDBOX_CONFIG = {
     subtitle: "给小月亮的专属歌单",
     nickname: "小月亮",
     loveStart: "2026-06-24",
-    firstWeek: "2026-W28"
+    firstWeek: "2026-W28",
+    accessHash: "6e849cef492daea3f73886f04243079d9c5ee5d736f13a36cb2c87553f8e934a"
   },
   WEEKS: {}
 };

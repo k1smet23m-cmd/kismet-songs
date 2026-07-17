@@ -40,6 +40,107 @@ input { font: inherit; }
 
 button { color: inherit; }
 
+body.is-locked { overflow: hidden; }
+body.is-locked .stage { visibility: hidden; pointer-events: none; }
+
+.access-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 24px;
+  background: rgba(251, 246, 255, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.access-gate[hidden] { display: none; }
+
+.access-card {
+  width: min(100%, 370px);
+  padding: 34px 30px 28px;
+  border: 1px solid rgba(255,255,255,0.86);
+  border-radius: 8px;
+  background: rgba(255, 253, 255, 0.9);
+  box-shadow: 0 24px 70px rgba(87, 52, 120, 0.18);
+  text-align: center;
+}
+
+.access-card__moon {
+  width: 42px;
+  height: 42px;
+  color: var(--gold);
+  filter: drop-shadow(0 0 10px rgba(244, 200, 106, 0.44));
+}
+
+.access-card__brand {
+  margin: 8px 0 18px;
+  color: var(--violet-dark);
+  font: 700 1.8rem/1 var(--font-script);
+}
+
+.access-card h1 {
+  margin: 0 0 24px;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.access-form { display: grid; gap: 10px; text-align: left; }
+.access-form label { color: var(--ink-muted); font-size: 0.82rem; }
+
+.access-form input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(109,63,209,0.2);
+  border-radius: 6px;
+  outline: none;
+  color: var(--ink);
+  background: rgba(255,255,255,0.94);
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.access-form input:focus {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.12);
+}
+
+.access-form button {
+  min-height: 46px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--violet), var(--rose));
+  box-shadow: 0 9px 20px rgba(120,76,159,0.2);
+  cursor: pointer;
+  transition: transform 0.16s ease, filter 0.16s ease;
+}
+
+.access-form button:hover { filter: brightness(1.04); transform: translateY(-1px); }
+.access-form button:active { transform: translateY(1px); }
+.access-form button:disabled { cursor: wait; opacity: 0.7; }
+.access-form button:focus-visible { outline: 3px solid rgba(109,63,209,0.28); outline-offset: 3px; }
+
+.access-error {
+  min-height: 1.4em;
+  margin: 12px 0 0;
+  color: #b33f72;
+  font-size: 0.82rem;
+}
+
+.access-card.has-error { animation: access-shake 0.32s ease; }
+@keyframes access-shake {
+  0%,100% { transform: translateX(0); }
+  30% { transform: translateX(-5px); }
+  65% { transform: translateX(5px); }
+}
+
 .svg-sprite {
   position: absolute;
   width: 0;
@@ -681,6 +782,11 @@ button { color: inherit; }
 }
 
 @media (max-width: 640px) {
+  .access-gate { padding: 18px; }
+  .access-card { padding: 30px 22px 24px; }
+  .access-card__brand { font-size: 1.6rem; }
+  .access-card h1 { font-size: 1.12rem; }
+
   .page--envelope { padding: 28px 16px; }
   .scene-mark { margin-bottom: 16px; }
   .scene-mark svg { width: 34px; height: 34px; }

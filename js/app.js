@@ -8,6 +8,8 @@
   var NICKNAME = SITE.nickname || "小月亮";
   var LOVE_START = SITE.loveStart || "2026-06-24";
   var FIRST_WEEK = SITE.firstWeek || "2026-W29";
+  var ACCESS_HASH = SITE.accessHash || "";
+  var ACCESS_KEY = "kismet_access_granted_v1";
   var PALETTE = ["#ff9fc7", "#c5a7ff", "#91d5ff", "#ffd57a", "#8de3c7", "#ffb3c6", "#b7b0ff"];
   var REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -124,6 +126,66 @@
   var coverArt = byId("coverArt");
   var songTitle = byId("songTitle");
   var songNote = byId("songNote");
+  var stage = document.querySelector(".stage");
+  var accessGate = byId("accessGate");
+  var accessForm = byId("accessForm");
+  var accessPassword = byId("accessPassword");
+  var accessError = byId("accessError");
+
+  function unlockSite(shouldFocus) {
+    document.body.classList.remove("is-locked");
+    accessGate.hidden = true;
+    stage.removeAttribute("inert");
+    stage.setAttribute("aria-hidden", "false");
+    if (shouldFocus) window.requestAnimationFrame(function () { envelope.focus(); });
+  }
+
+  function hashText(value) {
+    if (!window.crypto || !window.crypto.subtle) {
+      return Promise.reject(new Error("Web Crypto unavailable"));
+    }
+    var bytes = new TextEncoder().encode(value);
+    return window.crypto.subtle.digest("SHA-256", bytes).then(function (buffer) {
+      return Array.from(new Uint8Array(buffer)).map(function (byte) {
+        return byte.toString(16).padStart(2, "0");
+      }).join("");
+    });
+  }
+
+  function setupAccessGate() {
+    var remembered = "";
+    try { remembered = localStorage.getItem(ACCESS_KEY) || ""; } catch (error) {}
+    if (!ACCESS_HASH || remembered === ACCESS_HASH) {
+      unlockSite(false);
+      return;
+    }
+
+    window.requestAnimationFrame(function () { accessPassword.focus(); });
+    accessPassword.addEventListener("input", function () { accessError.textContent = ""; });
+    accessForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var submitButton = accessForm.querySelector("button[type='submit']");
+      submitButton.disabled = true;
+      accessError.textContent = "";
+      hashText(accessPassword.value).then(function (actualHash) {
+        if (actualHash !== ACCESS_HASH) {
+          accessError.textContent = "密码不对，再想一想吧";
+          accessGate.querySelector(".access-card").classList.remove("has-error");
+          void accessGate.offsetWidth;
+          accessGate.querySelector(".access-card").classList.add("has-error");
+          accessPassword.select();
+          return;
+        }
+        try { localStorage.setItem(ACCESS_KEY, ACCESS_HASH); } catch (error) {}
+        accessPassword.value = "";
+        unlockSite(true);
+      }).catch(function () {
+        accessError.textContent = "当前浏览器暂时无法验证密码";
+      }).finally(function () {
+        submitButton.disabled = false;
+      });
+    });
+  }
 
   function transitionTo(pageNumber) {
     if (pageNumber === activePage || transitionBusy) return;
@@ -393,6 +455,7 @@
     transitionTo(2);
   });
 
+  setupAccessGate();
   fillPageCopy();
   refreshStatus();
   buildBoxes();
