@@ -8,7 +8,7 @@
   var NICKNAME = SITE.nickname || "小月亮";
   var LOVE_START = SITE.loveStart || "2026-06-24";
   var FIRST_WEEK = SITE.firstWeek || "2026-W29";
-  var PALETTE = ["#ec7fac", "#a98aeb", "#73b8df", "#e9b85b", "#70c4ad", "#e58ca6", "#8f86d8"];
+  var PALETTE = ["#ff9fc7", "#c5a7ff", "#91d5ff", "#ffd57a", "#8de3c7", "#ffb3c6", "#b7b0ff"];
   var REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function byId(id) { return document.getElementById(id); }

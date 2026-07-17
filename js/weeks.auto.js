@@ -8,7 +8,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "有些心事不必藏得太深，在我这里，你永远可以做自己。",
         "audio": "assets/audio/2026-W29/1.mp3",
         "cover": "",
-        "color": "#ec7fac",
+        "color": "#ff9fc7",
         "category": "每周精选"
       },
       {
@@ -16,7 +16,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "怀念不是回头，是把一起走过的时光好好收进心里。",
         "audio": "assets/audio/2026-W29/2.mp3",
         "cover": "",
-        "color": "#a98aeb",
+        "color": "#c5a7ff",
         "category": "每周精选"
       },
       {
@@ -24,7 +24,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "把这首小情歌，放进今天小小的想念里。",
         "audio": "assets/audio/2026-W29/3.mp3",
         "cover": "",
-        "color": "#73b8df",
+        "color": "#91d5ff",
         "category": "每周精选"
       },
       {
@@ -32,7 +32,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "很多问题没有标准答案，但我会一直认真听你说。",
         "audio": "assets/audio/2026-W29/4.mp3",
         "cover": "",
-        "color": "#e9b85b",
+        "color": "#ffd57a",
         "category": "每周精选"
       },
       {
@@ -40,7 +40,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "人群里总会先看到你，大概这就是心引力。",
         "audio": "assets/audio/2026-W29/5.mp3",
         "cover": "",
-        "color": "#70c4ad",
+        "color": "#8de3c7",
         "category": "每周精选"
       },
       {
@@ -48,7 +48,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "好的默契，是不用排练也能接住彼此。",
         "audio": "assets/audio/2026-W29/6.mp3",
         "cover": "",
-        "color": "#e58ca6",
+        "color": "#ffb3c6",
         "category": "每周精选"
       },
       {
@@ -56,7 +56,7 @@ window.BLINDBOX_AUTO_WEEKS = {
         "note": "我想把今天的最后一句话留给你：很想你。",
         "audio": "assets/audio/2026-W29/7.mp3",
         "cover": "",
-        "color": "#8f86d8",
+        "color": "#b7b0ff",
         "category": "每周精选"
       }
     ]
