@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7efff" />
+  <meta name="description" content="Kismet Songs - 每天拆一首歌的盲盒音乐礼物" />
+  <title>Kismet Songs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20260717-4" />
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path d="M20.8 15.1A8.6 8.6 0 0 1 8.9 3.2 9 9 0 1 0 20.8 15.1Z" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24">
+      <path d="M12 2c.8 6 3.8 9 10 10-6.2 1-9.2 4-10 10-.8-6-3.8-9-10-10 6.2-1 9.2-4 10-10Z" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="m15 18-6-6 6-6M9 12h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24">
+      <path d="m8 5 11 7-11 7V5Z" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-pause" viewBox="0 0 24 24">
+      <path d="M7 5h4v14H7zM14 5h4v14h-4z" fill="currentColor" />
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24">
+      <rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </symbol>
+    <symbol id="icon-music" viewBox="0 0 24 24">
+      <path d="M9 18V5l11-2v13M9 9l11-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="6" cy="18" r="3" fill="currentColor" /><circle cx="17" cy="16" r="3" fill="currentColor" />
+    </symbol>
+  </svg>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient-glow ambient-glow--violet"></span>
+    <span class="ambient-glow ambient-glow--rose"></span>
+    <div class="bg-layer" id="bgLayer"></div>
+  </div>
+  <div class="veil" id="veil" aria-hidden="true"></div>
+
+  <main class="stage">
+    <section class="page page--envelope is-active" id="page1" data-page="1" aria-labelledby="envTitle">
+      <div class="envelope-scene">
+        <div class="scene-mark" aria-hidden="true">
+          <svg><use href="#icon-moon" /></svg>
+          <span></span>
+        </div>
+        <button class="envelope" id="envelope" type="button" aria-label="拆开信封">
+          <span class="envelope__back"></span>
+          <span class="letter">
+            <svg class="letter__moon" aria-hidden="true"><use href="#icon-moon" /></svg>
+            <span class="letter__title" id="envTitle">Kismet Songs</span>
+            <span class="letter__rule" aria-hidden="true"></span>
+            <span class="letter__subtitle" id="envSub">给小月亮的专属歌单</span>
+          </span>
+          <span class="envelope__flap"></span>
+          <span class="envelope__pocket"></span>
+          <span class="envelope__seal" aria-hidden="true">
+            <svg><use href="#icon-moon" /></svg>
+          </span>
+        </button>
+        <p class="envelope-hint" id="envHint">
+          <svg aria-hidden="true"><use href="#icon-spark" /></svg>
+          <span>轻点信封，收下今天的歌</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="page page--gifts" id="page2" data-page="2" aria-labelledby="giftHeading">
+      <div class="gift-shell">
+        <header class="topbar">
+          <a class="brand" href="#" id="brandHome" aria-label="返回信封页">
+            <svg aria-hidden="true"><use href="#icon-moon" /></svg>
+            <span>Kismet Songs</span>
+          </a>
+          <span class="week-tag" id="weekLabel">我们的第 1 周</span>
+        </header>
+
+        <div class="gift-intro">
+          <p class="eyebrow">SEVEN DAYS, SEVEN SONGS</p>
+          <h1 id="giftHeading">今天的礼物，还在等你</h1>
+          <div class="date-row" aria-label="纪念日信息">
+            <time id="dateText" datetime="2026-07-17">2026.7.17</time>
+            <span aria-hidden="true"></span>
+            <strong id="loveDay">爱的第 24 天</strong>
+          </div>
+        </div>
+
+        <section class="boxes" id="boxes" aria-label="本周的七个音乐盲盒"></section>
+
+        <div class="gift-footer">
+          <div class="status" id="status" role="status" aria-live="polite">
+            <svg aria-hidden="true"><use href="#icon-spark" /></svg>
+            <span id="statusText"></span>
+          </div>
+          <div class="week-progress" aria-label="本周拆盒进度">
+            <span id="progressText">本周已拆 0 / 7</span>
+            <div class="progress-dots" id="progressDots" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page page--player" id="page3" data-page="3" aria-labelledby="songTitle">
+      <div class="player-shell">
+        <header class="player-topbar">
+          <button class="back-button" id="backBtn" type="button">
+            <svg aria-hidden="true"><use href="#icon-arrow-left" /></svg>
+            <span>返回盲盒</span>
+          </button>
+          <span class="player-brand">
+            <svg aria-hidden="true"><use href="#icon-moon" /></svg>
+            <span>Kismet Songs</span>
+          </span>
+        </header>
+
+        <div class="player-layout">
+          <figure class="cover-art" id="coverArt">
+            <div class="cover-art__sky" aria-hidden="true">
+              <span class="cover-art__moon"></span>
+              <span class="cover-art__star cover-art__star--1"></span>
+              <span class="cover-art__star cover-art__star--2"></span>
+              <svg class="cover-art__note"><use href="#icon-music" /></svg>
+            </div>
+            <figcaption id="coverCaption">DAY 01</figcaption>
+          </figure>
+
+          <article class="song-card">
+            <p class="eyebrow">TODAY'S SONG</p>
+            <h1 id="songTitle">歌名</h1>
+            <blockquote id="songNote">今天也想把一首歌送给你。</blockquote>
+
+            <div class="audio-player" id="player">
+              <button class="play-button" id="playBtn" type="button" aria-label="播放" title="播放">
+                <svg class="icon-play" aria-hidden="true"><use href="#icon-play" /></svg>
+                <svg class="icon-pause" aria-hidden="true"><use href="#icon-pause" /></svg>
+              </button>
+              <div class="timeline">
+                <input id="progress" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度" />
+                <div class="time-row">
+                  <span id="currentTime">0:00</span>
+                  <span id="duration">0:00</span>
+                </div>
+              </div>
+            </div>
+            <audio id="audio" preload="metadata"></audio>
+            <p class="audio-hint" id="audioHint" role="status"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="js/songs.config.js?v=20260717-4"></script>
+  <script src="js/weeks.auto.js?v=20260717-4"></script>
+  <script src="js/app.js?v=20260717-4"></script>
+</body>
+</html>

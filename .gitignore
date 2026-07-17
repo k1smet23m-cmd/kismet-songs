@@ -1,0 +1,18 @@
+# Publish only the static site. Everything else stays local.
+*
+!.gitignore
+!.nojekyll
+!index.html
+
+!css/
+!css/**
+
+!js/
+!js/**
+
+!assets/
+assets/*
+!assets/audio/
+!assets/audio/**
+!assets/img/
+!assets/img/**
