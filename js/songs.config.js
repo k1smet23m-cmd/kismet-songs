@@ -10,6 +10,11 @@ window.BLINDBOX_CONFIG = {
     nickname: "小月亮",
     loveStart: "2026-06-24",
     firstWeek: "2026-W28",
+    preopenedWeeks: ["2026-W28", "2026-W29"],
+    drawAllowanceRepair: {
+      date: "2026-07-20",
+      token: "restore-2026-07-20-after-history-import-v1"
+    },
     accessHash: "6e849cef492daea3f73886f04243079d9c5ee5d736f13a36cb2c87553f8e934a"
   },
   WEEKS: {}
